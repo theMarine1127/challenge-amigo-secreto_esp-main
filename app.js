@@ -5,6 +5,7 @@ const amigos = [];
 function asignarTextElement(elemento, texto) { //function para asiganar text
     let elementHtml = document.querySelector(elemento);
     elementHtml.innerHTML = texto;
+    elementHtml.classList.add('result-list');//se usa para agregar clase css
 }
 
 function agregarAmigo() {
@@ -38,13 +39,14 @@ function limpiaNombre() {
 }
 
 function sortearAmigo() {
-    if (amigos === 0) {
-        alert("Debe registrar amigos.");
-    } else {
+    if (amigos.length > 0) {
         const amigoIndex = Math.floor(Math.random() * amigos.length);
         const aleatorioAmigo = amigos[amigoIndex];
-        return aleatorioAmigo;
+        asignarTextElement('ul', `El amigo seleccionado es: ${aleatorioAmigo}`);
+        //return aleatorioAmigo;
+    } else {
+        alert("Debe registrar amigos.");
+        return null;
     }
 }
 
-sortearAmigo()
